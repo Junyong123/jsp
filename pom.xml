@@ -61,6 +61,15 @@
 			<!-- provided는 배포를 안한다는 의미 = 기업에서 자기들만 쓰는 용도가 많음 -->
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.12</version>
+		    <scope>test</scope>
+		</dependency>
+		
+		
 	</dependencies>
 	
 	
