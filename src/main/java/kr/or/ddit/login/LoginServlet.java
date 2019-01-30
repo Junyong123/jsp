@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
     
 	private IUserService userService;
 	
-    @Override	
+    @Override
 	public void init(ServletConfig config) throws ServletException {
     	userService = new UserServiceImpl();
 	}

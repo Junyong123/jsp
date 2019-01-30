@@ -19,7 +19,7 @@
 
     <!-- Custom styles for this template -->
     <link href="<%=request.getContextPath() %>/css/dashboard.css" rel="stylesheet">
-
+	
   </head>
 
   <body>
@@ -49,7 +49,7 @@
                 	List<UserVO> userList = (List<UserVO>)request.getAttribute("userList");
     		
     				for(int i=0; i<userList.size(); i++){
-    					out.write("<tr class='userTr' data-userId=' " + userList.get(i).getUserId() + " '>");
+    					out.write("<tr class='userTr' data-userid='" + userList.get(i).getUserId() + "'>");
     					out.write("<td>"+(i+1)+"</td>");
     					out.write("<td>"+userList.get(i).getUserId()+"</td>");
     					out.write("<td>"+userList.get(i).getUserNm()+"</td>");
@@ -70,38 +70,38 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
 	<script>
-		// 문서로딩이 완료된 이후 이벤트 등록
+		//문서로딩이 완료된 이후 이벤트 등록
 		$(document).ready(function(){
 			console.log("document ready");
 			
-			// 사용자 tr 태그 클릭시 이벤트 핸들러
-			$(".userTr").on("click",function(){
-				// 클릭한 userTr태그의 userId 값을 출력
-// 				var userId = $(this).children()[1].innerText;
-// 				console.log(userId);
-				var userId = $(this).data("userid") ;
-				// this는 현재 선택한 항목
+			//사용자 tr 태그 클릭시 이벤트 핸들러
+// 			$(".userTr").click(function(){
+// 			});
+			
+			$(".userTr").on("click", function(){
+				console.log("userTr click");
+				//클릭한 userTr태그의 userId 값을 출력
+// 				console.log($(this).children()[1].innerText);
+// 				console.log("data-userid : " + $(this).data("userid"));
 				
-				// user를 얻어오는 방법
-				// 1.document
-				// 2.form
+				var userId = $(this).data("userid");
 				
 				// 1.document
-// 				document.location = "/user?userId="+userId;
+// 				document.location = "/user?userId=" + userId;
 				
 				// 2.form
 				$("#userId").val(userId);
-				// 다시 from 태그를 변경이 가능하다
-				$("#frm").attr("action","/userAllList"); // attribute
+// 				$("#frm").attr("action", "/user"); //속성바꿀때 사용
 				$("#frm").submit();
+				
 			});
+			
 		});
 	</script>
-	
-  <form id="frm" action="<%=request.getContextPath()%>/user" method = "get">
-  	<input type="hidden" id="userId" name="userId" />
-  </form>
-  
+	<form id ="frm" action="<%=request.getContextPath()%>/user" method="get">
+		<input type="hidden" id="userId" name="userId"/>
+	</form>
   </body>
 </html>

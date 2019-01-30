@@ -33,20 +33,20 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">사용자 정보 조회</h1>
           	<form class="form-horizontal" role="form">
-          	
-				<% UserVO user = (UserVO)request.getAttribute("userVo"); %>
-				
+          		<%
+          			UserVO user = (UserVO)request.getAttribute("userVO");
+          		%>
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 					<div class="col-sm-10">
-						<label class="control-label"><%= user.getUserId() %></label>
+						<label class="control-label"><%=user.getUserId() %></label>
 					</div>
 				</div>
 	
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 					<div class="col-sm-10">
-						<label class="control-label"><%= user.getUserNm() %></label>
+						<label class="control-label"><%=user.getUserNm() %></label>
 					</div>
 				</div>
 				
@@ -67,7 +67,7 @@
 				<div class="form-group">
 					<label for="pass" class="col-sm-2 control-label">등록일자</label>
 					<div class="col-sm-10">
-						<label class="control-label"><%= user.getReg_dt_fmt() %></label>
+						<label class="control-label"><%=user.getReg_dt_fmt() %></label>
 					</div>
 				</div>
 	

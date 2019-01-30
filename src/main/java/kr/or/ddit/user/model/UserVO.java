@@ -15,28 +15,31 @@ public class UserVO {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	
 	public String getUserNm() {
 		return userNm;
 	}
 	public void setUserNm(String userNm) {
 		this.userNm = userNm;
 	}
+	
 	public String getPass() {
 		return pass;
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	
 	public Date getReg_dt() {
 		return reg_dt;
 	}
 	public void setReg_dt(Date reg_dt) {
 		this.reg_dt = reg_dt;
 	}
-	// yyyy-MM-dd 포맷팅
+	
+	//reg_dt 값을 yyyy-MM-dd 포맷팅
 	public String getReg_dt_fmt(){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
 		return sdf.format(reg_dt);
 	}
 	
