@@ -20,12 +20,10 @@ public class UtilTest {
 		String cookieString = "userId=borwn; remerber=y; test=value";
 		CookieUtil cookieUtil = new CookieUtil(cookieString);
 		
-		String[] splitString = cookieString.split("; ");
-		
 		/***When***/
-		String cookieValue1 = cookieUtil.getCookieValue(splitString[0]);
-		String cookieValue2 = cookieUtil.getCookieValue(splitString[1]);
-		String cookieValue3 = cookieUtil.getCookieValue(splitString[2]);
+		String cookieValue1 = cookieUtil.getCookieValue("y");
+		String cookieValue2 = cookieUtil.getCookieValue("borwn");
+		String cookieValue3 = cookieUtil.getCookieValue("value");
 				
 		/***Then***/
 		assertEquals("y",cookieValue1);
