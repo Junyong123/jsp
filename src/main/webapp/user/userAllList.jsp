@@ -1,6 +1,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45,19 +47,17 @@
                 </tr>
               </thead>
               <tbody>
-                <%
-                	List<UserVO> userList = (List<UserVO>)request.getAttribute("userList");
-    		
-    				for(int i=0; i<userList.size(); i++){
-    					out.write("<tr class='userTr' data-userid='" + userList.get(i).getUserId() + "'>");
-    					out.write("<td>"+(i+1)+"</td>");
-    					out.write("<td>"+userList.get(i).getUserId()+"</td>");
-    					out.write("<td>"+userList.get(i).getUserNm()+"</td>");
-    					out.write("<td>"+"---"+"</td>");
-    					out.write("<td>"+userList.get(i).getReg_dt_fmt()+"</td>");
-    					out.write("</tr>");
-    				}
-                %>
+                
+                <c:forEach items="${userList }" var ="user" varStatus="i">
+                <%-- 향상된 for문은 begin이 없어서 i값을 구할 수 없음으로 varStatus를 이용해서 구한다 --%> 
+                	<tr class='userTr' data-userid='${user.userId }'>
+                		<td> ${i.index } </td>>
+                		<td> ${user.userId }</td>
+                		<td> ${user.userNm }</td>
+                		<td> --- </td>
+                		<td> ${user.reg_dt_fmt }</td>
+                	</tr>
+               </c:forEach>
               </tbody>
             </table>
           </div>
@@ -100,7 +100,24 @@
 			
 		});
 	</script>
-	<form id ="frm" action="<%=request.getContextPath()%>/user" method="get">
+	
+	<%
+		pageContext.getRequest().equals(request);
+		pageContext.getSession().equals(session);
+		
+		// 1
+		request.getContextPath();
+		((HttpServletRequest)pageContext.getRequest()).getContextPath();
+		application.getContextPath();
+		
+		// 2
+		((HttpServletRequest)pageContext.getRequest()).getContextPath();
+		pageContext.getServletContext().getContextPath();
+		
+		// el은 request나 context에 직접 접근이 불가능하다
+	%>
+	
+	<form id ="frm" action="${pageContext.servletContext.contextPath }/user" method="get">
 		<input type="hidden" id="userId" name="userId"/>
 	</form>
   </body>

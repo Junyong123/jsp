@@ -31,13 +31,9 @@ public class RangersServlet extends HttpServlet{
 		request.setAttribute("userName", "brown_request"); // request attribute
 		request.getSession().setAttribute("userName", "brown_session"); // session attribute
 		
-		
-		// application attibute -> servletContext
+		// application attribute -> servletContext
 		ServletContext application = getServletContext();
 		application.setAttribute("userName", "brown_application");
-		
-		
-		
 		
 		// /rangers/rangersList.jsp로 forward
 		// rangersList.jsp에서는 해당 데이터를 출력

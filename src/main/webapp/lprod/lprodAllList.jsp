@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -44,19 +45,15 @@
                 </tr>
               </thead>
               <tbody>
-                <%
-                	List<LprodVO> lprodList = (List<LprodVO>)request.getAttribute("lprodList");
-    		
-    				for(int i=0; i<lprodList.size(); i++){
-    					//data-변수이름 을 통해 JQuery로 $(this).data("변수이름") 이렇게 값을 가져올 수 있음
-    					//예)data-lprodgu를 통해 JQuery로 $(this).data("lprodgu") 이렇게 값을 가져올 수 있음
-    					out.write("<tr class='lprodTr' data-lprodgu='" + lprodList.get(i).getLprod_gu() + "'>");
-    					out.write("<td>"+lprodList.get(i).getLprod_id()+"</td>");
-    					out.write("<td>"+lprodList.get(i).getLprod_gu()+"</td>");
-    					out.write("<td>"+lprodList.get(i).getLprod_nm()+"</td>");
-    					out.write("</tr>");
-    				}
-                %>
+                
+                <c:forEach items="${lprodList}" var="lprod">
+                	<tr class="lprodTr" data-lprodgu="${lprod.lprod_gu }">
+                		<td>${lprod.lprod_id }</td>
+                		<td>${lprod.lprod_gu }</td>
+                		<td>${lprod.lprod_nm }</td>
+                	</tr>
+                </c:forEach>
+                
               </tbody>
             </table>
           </div>
