@@ -1,6 +1,7 @@
 package kr.or.ddit.login;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -32,6 +33,7 @@ public class LoginServlet extends HttpServlet {
 
 	//웹브라우저 주소줄에 localhost/login url을 입력하여 요청
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		// /login/login.jsp로 request dispatch forward
 		RequestDispatcher rd = request.getRequestDispatcher("/login/login.jsp");
 		rd.forward(request, response);
