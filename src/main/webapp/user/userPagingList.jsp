@@ -56,11 +56,16 @@
 									<td>${user.userId }</td>
 									<td>${user.userNm }</td>
 									<td>---</td>
-									<td><fmt:formatDate value="${vo.get_dt }" pattern="yyyy-MM-dd"/></td>
+									<td><fmt:formatDate value="${vo.get_dt }" pattern="yyyy/MM/dd"/></td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
+					
+					<form action="${pageContext.request.contextPath }/userForm" method="get">
+						<button type="submit" class="btn btn-default">사용자 등록</button>
+					</form>
+					
 					<nav style="text-align: center;">
 						<ul class="pagination">
 							<!-- 첫번째 페이지 -->

@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import kr.or.ddit.db.mybatis.MybatisSqlSessionFactory;
 import kr.or.ddit.user.dao.IUserDao;
 import kr.or.ddit.user.dao.UserDaoImpl;
 import kr.or.ddit.user.model.UserVO;
@@ -12,6 +16,7 @@ import kr.or.ddit.util.model.PageVO;
 public class UserServiceImpl implements IUserService {
 	
 	private IUserDao userDao;
+	
 	public UserServiceImpl(){
 		userDao = new UserDaoImpl();
 	}
@@ -25,7 +30,12 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	public List<UserVO> getAllUser() {
-		return userDao.getAllUser();
+		SqlSessionFactory sqlSessionFactory = MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		List<UserVO> userlist = userDao.getAllUser(sqlSession);
+		sqlSession.close();
+		return userlist;
 	}
 
 	/**
@@ -38,7 +48,12 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	public UserVO selectUser(String userId) {
-		return userDao.selectUser(userId);
+		SqlSessionFactory sqlSessionFactory = MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		UserVO uvo = userDao.selectUser(sqlSession, userId);
+		sqlSession.close();
+		return uvo;
 	}
 
 	/**
@@ -51,12 +66,27 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	public Map<String, Object> selectUserPagingList(PageVO pageVO) {
+		SqlSessionFactory sqlSessionFactory = MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
 		//결과값을 두개 담아서 return 하기위해 Map 객체 사용
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		
-		resultMap.put("userList", userDao.selectUserPagingList(pageVO));
-		resultMap.put("userCnt", userDao.getUserCnt());
-		
+		resultMap.put("userList", userDao.selectUserPagingList(sqlSession,pageVO));
+		resultMap.put("userCnt", userDao.getUserCnt(sqlSession));
+		sqlSession.close();
 		return resultMap;
+	}
+
+	@Override
+	public int insertUser(UserVO vo) {
+		SqlSessionFactory sqlSessionFactory = MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		int cnt = userDao.insertUser(sqlSession, vo);
+		sqlSession.commit();
+		// insert의 경우에만 commit을 입력해준다
+		sqlSession.close();
+		
+		return cnt;
 	}
 }

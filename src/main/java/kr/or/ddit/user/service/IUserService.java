@@ -36,4 +36,6 @@ public interface IUserService {
 	 * Method 설명 : 사용자 페이지 리스트 조회
 	 */
 	Map<String, Object> selectUserPagingList(PageVO pageVO);
+	
+	int insertUser(UserVO vo);
 }
