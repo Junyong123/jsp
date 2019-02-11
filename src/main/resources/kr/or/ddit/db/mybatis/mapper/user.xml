@@ -12,8 +12,8 @@
   <!-- 특정 사용자 조회(userId) selectUser(String userId) query, dao(test), service(test) -->
   <select id="selectUser" resultType="UserVO" parameterType="String">
   	select *
-  	  from users
-  	 where userId = #{sss}
+  	from users
+  	where userId = #{userId}
   </select>
   
   <!-- 사용자 페이징 조회 -->

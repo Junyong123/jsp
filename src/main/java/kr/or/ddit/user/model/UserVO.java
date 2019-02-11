@@ -13,6 +13,25 @@ public class UserVO {
 	private String zipcode; // 우편번호
 	private Date reg_dt; // 등록일시
 
+	public UserVO(){
+		// 기본 생성자를 생성해주지 않으면 매개변수를 집어넣은 생성자를 작성할 경우 오류가 발생한다. mybatis문제
+	}
+	
+	
+	public UserVO(String userId, String userNm, String pass, String alias,
+			String addr1, String addr2, String zipcode) {
+		super();
+		this.userId = userId;
+		this.userNm = userNm;
+		this.pass = pass;
+		this.alias = alias;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.zipcode = zipcode;
+	}
+
+
+
 	public String getUserId() {
 		return userId;
 	}

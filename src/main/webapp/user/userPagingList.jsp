@@ -138,6 +138,13 @@
 			//사용자 tr 태그 클릭시 이벤트 핸들러
 			// 			$(".userTr").click(function(){
 			// 			});
+			
+			// msg속성이 존재하면 alert 아니면 넘어가기
+			<c:if test="${msg != null}">
+				alert("${mag}");
+				<% session.removeAttribute("msg");%>
+			</c:if>
+				
 
 			$(".userTr").on("click", function() {
 				console.log("userTr click");

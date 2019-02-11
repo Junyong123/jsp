@@ -29,16 +29,6 @@
     <param-name>ADMIN</param-name>
     <param-value>sun</param-value>
   </context-param>
-  
-<!--   <filter> -->
-<!--     <filter-name>requestCountFilter</filter-name> -->
-<!--     <filter-class>kr.or.ddit.filter.RequestCounterFilter</filter-class> -->
-<!--   </filter> -->
-<!--   <filter-mapping> -->
-<!--     <filter-name>requestCountFilter</filter-name> -->
-<!--     <url-pattern>/*</url-pattern> -->
-<!--   </filter-mapping> -->
-  
   <error-page>
     <error-code>404</error-code>
     <location>/error/404/404.html</location>

@@ -51,10 +51,7 @@ public class UserPagingListController extends HttpServlet {
 		request.setAttribute("lastPage", lastPage);
 		
 		//userPagingList를 화면으로 출력할 jsp로 위임(forward)
-		request.getRequestDispatcher("/user/userPagingList.jsp").forward(request, response);;
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/user/userPagingList.jsp").forward(request, response);
 		
 	}
 

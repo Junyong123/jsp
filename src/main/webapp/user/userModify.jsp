@@ -32,43 +32,43 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">사용자 정보 조회</h1>
+          	<form class="form-horizontal" role="form">
           		<%
           			UserVO user = (UserVO)request.getAttribute("userVO");
-    				request.setAttribute("naemId",user.getUserId());
+    				
           		%>
-          	<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/userModifyForm method="get">
 				<div class="form-group">
-					<label for="userNm" id="userId" name="userId" value="<%=user.getUserId() %>" class="col-sm-2 control-label">사용자 아이디</label>
+					<label for="userNm" id="userId" class="col-sm-2 control-label">사용자 아이디</label>
 					<div class="col-sm-10">
-						<label class="control-label"><%=user.getUserId() %></label>
+						<textarea><%=user.getUserId() %></textarea>
 					</div>
 				</div>
 	
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 					<div class="col-sm-10">
-						<label class="control-label"><%=user.getUserNm() %></label>
+						<textarea><%=user.getUserNm() %></textarea>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">별명</label>
 					<div class="col-sm-10">
-						<label class="control-label">---</label>
+						<textarea>---</textarea>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label for="pass" class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-10">
-						<label class="control-label">**********</label>
+						<textarea>**********</textarea>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label for="pass" class="col-sm-2 control-label">등록일자</label>
 					<div class="col-sm-10">
-						<label class="control-label"><%=user.getReg_dt_fmt() %></label>
+						<textarea><%=user.getReg_dt_fmt() %></textarea>
 					</div>
 				</div>
 	
@@ -81,23 +81,13 @@
         </div>
       </div>
     </div>
-<%--     <form id="frm" action="<%=request.getContextPath()%>/userModifyForm" method="get"> --%>
-<!-- 		<input type="hidden" id="userModi" name="userModi" /> -->
-<!-- 	</form> -->
+    
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	
-<!-- 	<script> -->
-// // 		$(document).ready(function(){
-// // 			$("#modifybtn").on("click",function(){
-// // 				$("#userModi").submit();
-// // 			});
-// // 		});
-<!-- <!-- 	</script> --> -->
-	
+
   </body>
 </html>

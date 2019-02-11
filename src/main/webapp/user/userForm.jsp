@@ -1,6 +1,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -105,7 +106,35 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
-		$(document).ready(function(){
+	
+		function initData(){
+			$("#userId").val("ljw");
+			$("#userNm").val("ijdsf");
+			$("#alias").val("jhw");
+			$("#addr1").val("머전");
+			$("#addr2").val("2층");
+			$("#zipcode").val("32512");
+			$("#pass").val("1234");
+		}	
+	
+		$(document).ready(function(){ // 프로그램 시작시 실행(ready때문에)
+			
+			// 데이터 입력 초기화
+			initDate();
+			
+			if("${msg}" != "")
+				alert("${msg}");
+			
+			/*
+			if("중복 체크 실패" != "")
+				alert("중복 체크 실패");
+			*/
+			
+			//sever side에서 비교
+			<c:if test="${request.msg != null}">
+			alert("${request.msg}")
+			</c:if>
+		
 			// 우편번호 검색 버튼 클릭 이벤트
 			$("#zipcodeBtn").on("click",function(){
 			    new daum.Postcode({
