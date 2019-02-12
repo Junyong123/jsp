@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/sumCalculation" method="post">
+	<form action="/sumCalculation" method="post"> 
 		start : <input type="text" name="start">
 		end : <input type="text" name="end">
 		<input type="submit" value="전송">

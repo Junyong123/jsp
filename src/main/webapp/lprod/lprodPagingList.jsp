@@ -66,13 +66,13 @@
 				      	</li>
 				    	</c:when>
 				    	
-				    	<c:otherwise>
+				    	<c:oherwise>
 				    		<li>
 	    					<a href="${ pageContext.servletContext.contextPath}/lprodPagingList" aria-label="Previous">
 				        		<span aria-hidden="true">&laquo;</span>
 				      		</a>
 				      	</li>
-				    	</c:otherwise>
+				    	</c:oherwise>
 				    </c:choose>
 				    <!-- 페이지 -->
 				  

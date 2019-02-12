@@ -1,6 +1,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,22 +34,35 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">사용자 정보 조회</h1>
-          		<%
-          			UserVO user = (UserVO)request.getAttribute("userVO");
-    				request.setAttribute("naemId",user.getUserId());
-          		%>
-          	<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/userModifyForm method="get">
+          	
+          	<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/userModifyForm" method="get">
+          	
 				<div class="form-group">
-					<label for="userNm" id="userId" name="userId" value="<%=user.getUserId() %>" class="col-sm-2 control-label">사용자 아이디</label>
+					<label for="userNm" class="col-sm-2 control-label">사진</label>
 					<div class="col-sm-10">
-						<label class="control-label"><%=user.getUserId() %></label>
+						<img src="${pageContext.request.contextPath }/profileImg?userId=${userVO.userId}">
+<%-- 						<c:choose> --%>
+<%-- 							<c:when test="${userVO.filename ==null}" > --%>
+<%-- 								<img src="${pageContext.request.contextPath }/upload/noimg.png"/> --%>
+<%-- 							</c:when> --%>
+<%-- 							<c:otherwise> --%>
+<%-- 								<img src="${pageContext.request.contextPath }/upload/${userVO.filename }"/> --%>
+<%-- 							</c:otherwise> --%>
+<%-- 						</c:choose> --%>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="userNm" id="userId" class="col-sm-2 control-label">사용자 아이디</label>
+					<div class="col-sm-10">
+						<label class="control-label">${userVO.userId }</label>
 					</div>
 				</div>
 	
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 					<div class="col-sm-10">
-						<label class="control-label"><%=user.getUserNm() %></label>
+						<label class="control-label">${userVO.userNm }</label>
 					</div>
 				</div>
 				
@@ -68,7 +83,31 @@
 				<div class="form-group">
 					<label for="pass" class="col-sm-2 control-label">등록일자</label>
 					<div class="col-sm-10">
-						<label class="control-label"><%=user.getReg_dt_fmt() %></label>
+						<label class="control-label">
+							<fmt:formatDate value="${userVO.reg_dt}" pattern="yyyy-MM-dd"/>
+						</label>
+						
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="pass" class="col-sm-2 control-label">주소1</label>
+					<div class="col-sm-10">
+						<label class="control-label">${userVO.addr1 }</label>
+						</div>
+				</div>
+				
+				<div class="form-group">
+				<label for="pass" class="col-sm-2 control-label">주소2</label>
+				<div class="col-sm-10">
+					<label class="control-label">${userVO.addr2 }</label>
+					</div>
+				</div>
+				
+				<div class="form-group">
+				<label for="pass" class="col-sm-2 control-label">우편번호</label>
+				<div class="col-sm-10">
+					<label class="control-label">${userVO.zipcode }</label>
 					</div>
 				</div>
 	
