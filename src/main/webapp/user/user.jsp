@@ -51,9 +51,9 @@
 <%-- 						</c:choose> --%>
 					</div>
 				</div>
-				
+				<input type="hidden" id="userId" name="userId" value="${userVO.userId }"/>
 				<div class="form-group">
-					<label for="userNm" id="userId" class="col-sm-2 control-label">사용자 아이디</label>
+					<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 					<div class="col-sm-10">
 						<label class="control-label">${userVO.userId }</label>
 					</div>

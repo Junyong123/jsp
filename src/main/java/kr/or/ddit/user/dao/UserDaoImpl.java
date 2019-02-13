@@ -95,4 +95,10 @@ public class UserDaoImpl implements IUserDao{
 		
 		return cnt;
 	}
+
+	@Override
+	public int updateUser(SqlSession sqlSession, UserVO vo) {
+		int cnt = sqlSession.update("user.updateUser",vo);
+		return cnt;
+	}
 }

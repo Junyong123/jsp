@@ -35,8 +35,8 @@
   </select>
   
   <insert id="insertUser" parameterType="userVO">
-  	insert into users (userId,userNm,alias,addr1,addr2,zipcode,pass,reg_dt)
-	values(#{userId} , #{userNm} , #{alias} , #{addr1} , #{addr2} , #{zipcode} , #{pass} , #{reg_dt})
+  	insert into users (userId,userNm,alias,addr1,addr2,zipcode,pass,reg_dt,filename,realFilename)
+	values(#{userId} , #{userNm} , #{alias} , #{addr1} , #{addr2} , #{zipcode} , #{pass} , sysdate, #{filename}, #{realFilename})
   	
   </insert>
   
@@ -44,5 +44,15 @@
   <delete id= "deleteUser" parameterType="String">
   	delete from users where userId = #{userId}
   </delete>
+  
+  <!-- 사용자 수정 -->
+  <update id="updateUser" parameterType="UserVO">
+     update users
+        set userNm=#{userNm}, alias=#{alias},
+              addr1=#{addr1}, addr2=#{addr2}, zipcode=#{zipcode},
+              pass=#{pass} , filename=nvl(#{filename, jdbcType=VARCHAR},filename), realFilename=nvl(#{realFilename, jdbcType=VARCHAR},realFilename)
+              <!-- nvl(#{filename, jdbcType=VARCHAR},filename) jdbcType=VARCHAR는 문자열로 인식해라 라는 의미 , null이면 filename을 실행 -->
+      where userId=#{userId}
+  </update>
   
 </mapper>

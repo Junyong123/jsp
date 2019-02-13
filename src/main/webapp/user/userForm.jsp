@@ -34,7 +34,14 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">사용자 정보 조회</h1>
           
-          <form id="frm" method="post" action="${pageContext.request.contextPath }/userForm" class="form-horizontal" role="form">
+          <form id="frm" method="post" action="${pageContext.request.contextPath }/userForm" class="form-horizontal" role="form" enctype="multipart/form-data">
+            <div class="form-group">
+               <label for="userNm" class="col-sm-2 control-label">사진</label>
+               <div class="col-sm-10">
+                   <input type="file" class="form-control" id="profile" name="profile" placeholder="사진">
+               </div>
+            </div>
+            
             <div class="form-group">
                <label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
                <div class="col-sm-10">

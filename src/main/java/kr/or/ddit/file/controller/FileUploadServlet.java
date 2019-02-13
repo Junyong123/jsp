@@ -53,7 +53,7 @@ public class FileUploadServlet extends HttpServlet {
 		
 		//part 정보확인
 		//req.getPart(name);
-		//req.getParts();
+		//req.getParts(); // 여러파일을 할때 Collection<part>로 받는다
 //		Collection<Part> parts= request.getParts();
 //		
 //		for(Part part : parts){
@@ -62,7 +62,9 @@ public class FileUploadServlet extends HttpServlet {
 //		}
 		
 		Part uploadFilePart = request.getPart("uploadFile");
+		
 		String contentDisposition = uploadFilePart.getHeader("Content-Disposition");
+		
 		logger.debug("contentDisposition : {}",contentDisposition);
 		// {} 안에 contentDisposition 들어가 2개면 2개의 {} 필요
 		

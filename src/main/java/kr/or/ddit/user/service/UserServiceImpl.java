@@ -89,4 +89,15 @@ public class UserServiceImpl implements IUserService {
 		
 		return cnt;
 	}
+
+	@Override
+	public int updateUser(UserVO vo) {
+		SqlSessionFactory sqlSessionFactory = MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		int cnt = userDao.updateUser(sqlSession, vo);
+		sqlSession.close();
+		
+		return cnt;
+	}
 }
