@@ -60,4 +60,5 @@ public interface IUserDao {
 	
 	int updateUser(SqlSession sqlSession,UserVO vo);
 	
+	int encryptPass(SqlSession sqlSession,UserVO vo);
 }

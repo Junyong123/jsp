@@ -42,4 +42,6 @@ public interface IUserService {
 	int insertUser(UserVO vo);
 	
 	int updateUser(UserVO vo);
+	
+	int encryptPass();
 }

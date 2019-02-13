@@ -101,4 +101,10 @@ public class UserDaoImpl implements IUserDao{
 		int cnt = sqlSession.update("user.updateUser",vo);
 		return cnt;
 	}
+
+	@Override
+	public int encryptPass(SqlSession sqlSession, UserVO vo) {
+		int cnt = sqlSession.update("user.encryptPass",vo);
+		return cnt;
+	}
 }

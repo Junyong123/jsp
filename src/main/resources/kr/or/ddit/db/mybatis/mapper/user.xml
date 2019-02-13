@@ -55,4 +55,9 @@
       where userId=#{userId}
   </update>
   
+  <update id ="encryptPass" parameterType="UserVO">
+  	update users set pass = #{pass}
+  	where userId=#{userId}
+  </update>
+  
 </mapper>

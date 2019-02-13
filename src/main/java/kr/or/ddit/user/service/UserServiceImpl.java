@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import kr.or.ddit.db.mybatis.MybatisSqlSessionFactory;
+import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
 import kr.or.ddit.user.dao.IUserDao;
 import kr.or.ddit.user.dao.UserDaoImpl;
 import kr.or.ddit.user.model.UserVO;
@@ -96,6 +97,27 @@ public class UserServiceImpl implements IUserService {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		
 		int cnt = userDao.updateUser(sqlSession, vo);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return cnt;
+	}
+
+	@Override
+	public int encryptPass() {
+		SqlSessionFactory sqlSessionFactory = MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		List<UserVO> uvolist = userDao.getAllUser(sqlSession);
+		int cnt=0;
+		for(UserVO uvo : uvolist){
+			String pass = uvo.getPass();
+			String encryptPass = KISA_SHA256.encrypt(pass);
+			
+			uvo.setPass(encryptPass);
+			cnt = userDao.encryptPass(sqlSession, uvo);
+		}
+		sqlSession.commit();
 		sqlSession.close();
 		
 		return cnt;

@@ -68,5 +68,14 @@ public class UserServiceImplTest {
 		assertEquals(105, userCnt);
 	}
 	
-	
+	@Test
+	public void encryptPassTest(){
+		/***Given***/
+		
+		/***When***/
+		int cnt = userService.encryptPass();
+		/***Then***/
+		assertEquals(1, cnt);
+
+	}
 }
