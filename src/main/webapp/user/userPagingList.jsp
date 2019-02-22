@@ -155,11 +155,11 @@
 				var userId = $(this).data("userid");
 
 				// 1.document
-				// 				document.location = "/user?userId=" + userId;
+// 				document.location = "/user?userId=" + userId;
 
 				// 2.form
 				$("#userId").val(userId);
-				// 				$("#frm").attr("action", "/user"); //속성바꿀때 사용
+// 				$("#frm").attr("action", "/user?작성"); //속성바꿀때 사용
 				$("#frm").submit();
 
 			});

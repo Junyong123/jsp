@@ -17,7 +17,6 @@ import kr.or.ddit.util.model.PageVO;
 
 @WebServlet("/userPagingList")
 public class UserPagingListController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 	
 	private IUserService userService;
 	
