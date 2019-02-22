@@ -1,7 +1,5 @@
 package kr.or.ddit.util;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.ContentDisposition;
-
 public class PartUtil {
 	public static String getFileNameFromPart(String contetDisposition){
 		String[] splits = contetDisposition.split("; ");
