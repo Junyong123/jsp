@@ -66,13 +66,13 @@
 				      	</li>
 				    	</c:when>
 				    	
-				    	<c:oherwise>
+				    	<c:otherwise>
 				    		<li>
 	    					<a href="${ pageContext.servletContext.contextPath}/lprodPagingList" aria-label="Previous">
 				        		<span aria-hidden="true">&laquo;</span>
 				      		</a>
 				      	</li>
-				    	</c:oherwise>
+				    	</c:otherwise>
 				    </c:choose>
 				    <!-- 페이지 -->
 				  
@@ -82,7 +82,7 @@
             			<c:if test="${page == i }">
             				<c:set var="active" value="active"/>
             			</c:if>
-            			<li class=="${active}" >
+            			<li class="${active}" >
 				    		<a href="${ pageContext.servletContext.contextPath}/lprodPagingList?page=${i}">${i}</a>
 				    	</li>
             		</c:forEach>
