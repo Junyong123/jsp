@@ -11,7 +11,7 @@
   
   <!-- 특정 사용자 조회(userId) selectUser(String userId) query, dao(test), service(test) -->
   <select id="selectUser" resultType="UserVO" parameterType="String">
-  	select *
+  	select /*+index(users pk_users)*/ *
   	from users
   	where userId = #{userId}
   </select>
