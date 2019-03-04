@@ -37,7 +37,7 @@ public class KISA_SEED_CBC_test {
 	@Test
 	public void testencrypt() {
 		/***Given***/
-		String plainText = "brown";
+		String plainText = "brown1234";
 		/***When***/
 		String encryptText = KISA_SEED_CBC.Encrypt(plainText);
 		logger.debug("encrytText: {}",encryptText);
